@@ -43,7 +43,8 @@ def augment_images(
 
   # Get files
   files = glob.glob(input_dir + '/**/*.png')
-  # pprint("files = {}".format(files))
+  print('files_path = {}'.format(input_dir + '/**/*.png'))
+  pprint("files = {}".format(files))
 
   cnt = 0
 
@@ -80,6 +81,7 @@ if __name__ == '__main__':
 
   args = parser.parse_args()
 
+
   input_dir = args.input_dir
   assert input_dir, "input_dir can't be empty"
 
@@ -88,10 +90,12 @@ if __name__ == '__main__':
 
   resize = args.resize
 
+  clean_output = args.clean_output
+
   print("input_dir = {}".format(input_dir))
   print("output_dir = {}".format(output_dir))
 
-  if os.path.exists(output_dir):
+  if os.path.exists(output_dir) and clean_output:
     print('Clean output dir: ' + output_dir)
     shutil.rmtree(output_dir)
 
